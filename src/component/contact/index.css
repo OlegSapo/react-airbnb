@@ -1,0 +1,10 @@
+.block__photo-name {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.block__photo {
+  height: 80px;
+  width: 80px;
+}

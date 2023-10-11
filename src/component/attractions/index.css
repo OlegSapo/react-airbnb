@@ -1,0 +1,18 @@
+.list--links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 32px;
+}
+
+.link--item {
+  border-bottom: 1px solid #dee2ed;
+  padding-bottom: 8px;
+}
+
+.link--text {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration-line: underline;
+}

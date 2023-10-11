@@ -1,0 +1,16 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.description__text {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.description__divider {
+  border-bottom: 1px solid #dee2ed;
+  padding-bottom: 12px;
+}

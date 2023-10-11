@@ -1,3 +1,43 @@
+//підключаємо компонент загальної сторінки
+import Page from "./component/page";
+
+//підключаємо компонент header
+import Header from "./component/header";
+
+//підключаємо компонент Title
+import Title from "./component/title";
+
+//підключаємо компонент Photo
+import Photo from "./component/photo";
+
+//підключаємо компонент Price
+import Price from "./component/price";
+
+//підключаємо компонент RoomList
+import RoomList from "./component/room-list";
+
+//підключаємо компонент Details
+import Details from "./component/details";
+
+//підключаємо компонент Description
+import Description from "./component/description";
+
+//підключаємо компонент Amenities
+import Amenities from "./component/amenities";
+
+//підключаємо компонент Contact
+import Contact from "./component/contact";
+
+//підключаємо компонент Additional
+import Additional from "./component/additional";
+
+//підключаємо компонент Reviews
+import Reviews from "./component/reviews";
+
+//підключаємо компонент Attractions
+import Attractions from "./component/attractions";
+
+//головний компонент
 function App() {
   const data = {
     listing_name: "Іст-Сайд Біл",
@@ -78,22 +118,22 @@ function App() {
       name: "Kerthy",
       image: "https://picsum.photos/80/80",
       response_rate: 100,
-      response_time: "within an hour",
-      info: "I'm an Austin-Brooklyn filmmaker and television producer who can be found biking to the Farmer's Market...",
+      response_time: "Протягом години",
+      info: "Я кінорежисерка і телевізійний продюсер Остіна-Брукліна, якого можна знайти на велосипеді до Фермерського ринку...",
       phone: "+123-456-7890",
     },
 
     additional_properties: {
       house_rules:
-        "No smoking or pets allowed. Quiet hours from 10:00 PM to 7:00 AM.",
+        "Паління та домашні тварини заборонені. Тиша з 22:00 до 7:00.",
       cancellation_policy:
-        "Flexible cancellation policy with full refund if canceled 7 days before check-in.",
+        "Гнучка політика скасування з повним поверненням коштів у разі скасування за 7 днів до заїзду.",
       local_transportation:
-        "Public buses and taxis available within walking distance.",
-      host_languages: ["English", "Spanish"],
-      special_offers: "10% discount for bookings of 7 nights or more.",
-      "check-in_instructions":
-        "Check-in time is 3:00 PM. Please contact us in advance with your estimated arrival time.",
+        "Громадські автобуси та таксі в межах пішої досяжності.",
+      host_languages: ["Англійська", "іспанська"],
+      special_offers: "Знижка 10% при бронюванні від 7 ночей.",
+      checkin_instructions:
+        "Час реєстрації - 15:00. Будь ласка, зв'яжіться з нами заздалегідь, повідомте орієнтовний час свого прибуття.",
     },
 
     guestReviews: [
@@ -144,7 +184,82 @@ function App() {
     ],
   };
 
-  return <div>Hello World</div>;
+  return (
+    <Page>
+      {/* відображаємо компонент Logo */}
+      <Header />
+      {/* відображаємо компонент Title та передаємо в нього потрібні дані  */}
+      <Title
+        id1={true}
+        title={data.listing_name}
+        rating={data.reviews_summary.average_rating}
+        review={data.reviews_summary.total_reviews}
+        city={data.location.city}
+        country={data.location.country}
+        superhost={data.superhost}
+      />
+      {/* відображаємо компонент Photo  */}
+      <Photo src={data.image} name={data.listing_name} />
+      {/* відображаємо компонент Price  */}
+      <Price
+        price={data.price.original_price}
+        discount={data.price.discounted_price}
+        currency={data.price.currency}
+        cleaning={data.price.cleaning_fee}
+        service={data.price.service_fee}
+        checkin={data.availability.checkin_date}
+        checkout={data.availability.checkout_date}
+      />
+      {/* відображаємо компонент RoomList  */}
+      <RoomList list={data.roomTypes} />
+      {/* відображаємо компонент Description  */}
+      <Description title="Опис" children={data.description} />
+      {/* відображаємо компонент Details  */}
+      <Details
+        guests={data.property_details.guests}
+        bedrooms={data.property_details.bedrooms}
+        beds={data.property_details.beds}
+        baths={data.property_details.baths}
+      />
+      {/* відображаємо компонент Description  */}
+      <Description title="Про сусідів" children={data.neighborhood_info} />
+      {/* відображаємо компонент Details  */}
+      <Amenities
+        hasPool={data.amenities.hasPool}
+        hasGym={data.amenities.hasGym}
+        hasFreeBreakfast={data.amenities.hasFreeBreakfast}
+        hasFreeWiFi={data.amenities.hasFreeWiFi}
+        hasParking={data.amenities.hasParking}
+        hasPetsAllowed={data.amenities.hasPetsAllowed}
+        hasAirportShuttle={data.amenities.hasAirportShuttle}
+        hasConciergeService={data.amenities.hasConciergeService}
+        hasRoomService={data.amenities.hasRoomService}
+        hasChildFriendly={data.amenities.hasChildFriendly}
+      />
+      {/* відображаємо компонент Details  */}
+      <Contact
+        contctname={data.contact_info.name}
+        image={data.contact_info.image}
+        rate={data.contact_info.response_rate}
+        time={data.contact_info.response_time}
+        info={data.contact_info.info}
+        phone={data.contact_info.phone}
+      />
+      {/* відображаємо компонент Additional  */}
+      <Additional
+        rules={data.additional_properties.house_rules}
+        policy={data.additional_properties.cancellation_policy}
+        transportation={data.additional_properties.local_transportation}
+        languages={data.additional_properties.host_languages}
+        offers={data.additional_properties.special_offers}
+        instructions={data.additional_properties.checkin_instructions}
+      />
+      {/* відображаємо компонент Reviews  */}
+      <Reviews reviews={data.guestReviews} />
+      {/* відображаємо компонент Attractions  */}
+      <Attractions attractions={data.nearbyAttractions} />
+    </Page>
+  );
 }
 
 export default App;
